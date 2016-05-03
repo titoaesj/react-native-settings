@@ -1,9 +1,9 @@
 import React, {
   Component,
   View,
+  ListView,
   Text,
-  StyleSheet,
-  ListView
+  StyleSheet
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -12,12 +12,22 @@ import * as MyStyleSheet from '../components/common/MyStyleSheet';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
 import Color from '../resources/color'; //Importa a palheta de cores
-
+import SettingsListView from '../components/common/SettingsListView';
 
 class Home extends Component {
 
-  renderRow(rowData) {
-    return <SampleRow {...rowData} style={styles.row} />
+  constructor(props) {
+    super(props);
+
+    this.data = [
+      {title: "Horário de trabalho",type: "LINK", callback: this.itemCallback.bind(this)},
+      {title: "Notificação", type: "LINK", callback: this.itemCallback.bind(this)}
+    ];
+
+  }
+
+  itemCallback(){
+    console.log('callback do item');
   }
 
   render() {
@@ -41,7 +51,7 @@ class Home extends Component {
           leftItem={leftItem} >
         </Header>
         <View style={styles.body}>
-
+          <SettingsListView dataList={this.data} />
         </View>
       </View>
     );
