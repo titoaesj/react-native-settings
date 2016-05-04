@@ -11,7 +11,8 @@ module.exports = {
     SecondText: '#727272',
     DividerColor: '#B6B6B6',
     DimGray: '#aeacac',
-    BackgroundListView: '#fafafa'
+    BackgroundListView: '#fafafa',
+    SettingsIconColor: '#009688'
 
   }
 }

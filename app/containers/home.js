@@ -20,8 +20,24 @@ class Home extends Component {
     super(props);
 
     this.data = [
-      {title: "Horário de trabalho",type: "LINK", callback: this.itemCallback.bind(this)},
-      {title: "Notificação", type: "LINK", callback: this.itemCallback.bind(this)}
+      {
+        title: "Horário de trabalho",
+        type: "LINK",
+        callback: this.itemCallback.bind(this),
+        options: {
+          leftIcon: "clock"
+        }
+      },
+      {
+        title: "Notificação",
+        type: "LINK",
+        callback: this.itemCallback.bind(this)
+      },
+      {
+        title: "Toggle",
+        type: "SWITCH",
+        callback: this.itemCallback.bind(this)
+      }
     ];
 
   }

@@ -119,9 +119,7 @@ var styles = StyleSheet.create({
         flex: 1
     },
     listView: {
-      backgroundColor: Color.color.BackgroundListView,
-      paddingLeft: 10,
-      paddingRight: 10
+      backgroundColor: Color.color.BackgroundListView
     }
 });
 

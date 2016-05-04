@@ -5,11 +5,23 @@ import React, {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View
+  View,
+  Image
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
 import Touchable from './Touchable';
+import Color from '../../resources/color';
+
+import {
+  MKIconToggle,
+  MKSwitch,
+  MKRadioButton,
+  MKCheckbox,
+  MKColor,
+  getTheme,
+  setTheme,
+} from 'react-native-material-kit';
 
 
 /**
@@ -42,29 +54,49 @@ class PointListItem extends Component {
 
     switch (this.props.data.type) {
       case 'LINK':
-        return (
 
-            <Touchable onPress={this.props.data.callback}>
-              <View style={[styles.container, ...style]}>
-                <Text style={styles.rowTitle}>
-                  {this.props.data.title}
-                </Text>
-              </View>
-            </Touchable>
-          );
+        // Verifica se a row terar icon
+        if (this.props.data.options != null
+            && this.props.data.options.leftIcon != null) {
+          return (
+              <Touchable onPress={this.props.data.callback}>
+                <View style={[styles.containerLINK, ...style]}>
+                  <Image style={styles.rowIcon} source={require('../../resources/img/ic_clock.png')} />
+                  {/*<Icon style={styles.rowIcon} name="timer" size={30} color={Color.color.SettingsIconColor} />*/}
+                  <Text style={styles.rowWithIconTitle}>
+                    {this.props.data.title}
+                  </Text>
+                </View>
+              </Touchable>
+            );
+        } else {
+          return (
+              <Touchable onPress={this.props.data.callback}>
+                <View style={[styles.containerLINK, ...style]}>
+                  <Text style={styles.rowTitle}>
+                    {this.props.data.title}
+                  </Text>
+                </View>
+              </Touchable>
+            );
+          }
         break;
-      default:
+
+        case 'SWITCH':
         return (
-          <View style={[styles.container, ...style]}>
-            <TouchableHighlight >
+            <View style={[styles.containerSWITCH, ...style]}>
               <Text style={styles.rowTitle}>
                 {this.props.data.title}
               </Text>
-            </TouchableHighlight >
-          </View>
-          );
+              <View style={styles.switchAlign}>
+                  <View style={styles.col}>
+                    <MKSwitch checked={true} style={styles.switch} />
+                  </View>
+              </View>
+            </View>
+        );
+        break;
     }
-
   }
 }
 
@@ -85,17 +117,46 @@ PointListItem.contextTypes = {
 
 // Estilos do componente
 const styles = StyleSheet.create({
-  container: {
+  containerLINK: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    height: 70,
     padding: 16,
     borderBottomWidth: 0.3,
     borderBottomColor: 'gray'
   },
-  rowTitle: {
+  containerSWITCH: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 16,
+    paddingRight: 16,
+    height: 70,
+    paddingTop:5,
+    paddingBottom:5,
+    borderBottomWidth: 0.3,
+    borderBottomColor: 'gray'
+  },
+  rowWithIconTitle: {
     fontSize: 18
+  },
+  rowTitle: {
+    fontSize: 18,
+    marginLeft: 10
+  },
+  rowIcon: {
+    width: 35,
+    height: 35,
+    flexDirection: 'row',
+    marginRight: 8,
+    marginLeft: 10,
+    alignItems: 'center'
+  },
+  switchAlign: {
+    alignSelf: 'flex-end'
   }
 });
 
