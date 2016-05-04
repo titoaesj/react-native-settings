@@ -8,6 +8,7 @@ import React, {
 } from 'react-native';
 
 import ListItem from './ListItem';
+import Color from '../../resources/color';
 
 /**
  * Lista de pontos batidos
@@ -118,7 +119,9 @@ var styles = StyleSheet.create({
         flex: 1
     },
     listView: {
-      backgroundColor: '#F5FCFF'
+      backgroundColor: Color.color.BackgroundListView,
+      paddingLeft: 10,
+      paddingRight: 10
     }
 });
 

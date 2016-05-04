@@ -46,7 +46,7 @@ class PointListItem extends Component {
 
             <Touchable onPress={this.props.data.callback}>
               <View style={[styles.container, ...style]}>
-                <Text>
+                <Text style={styles.rowTitle}>
                   {this.props.data.title}
                 </Text>
               </View>
@@ -57,7 +57,7 @@ class PointListItem extends Component {
         return (
           <View style={[styles.container, ...style]}>
             <TouchableHighlight >
-              <Text>
+              <Text style={styles.rowTitle}>
                 {this.props.data.title}
               </Text>
             </TouchableHighlight >
@@ -90,45 +90,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 10
+    padding: 16,
+    borderBottomWidth: 0.3,
+    borderBottomColor: 'gray'
   },
-  icon: {
-    fontSize: 20
-  },
-  fluxIconWrapper: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  iconIn: {
-    color: 'green'
-  },
-  iconOut: {
-    color: 'red'
-  },
-
-  timeWrapper: {
-    flex: 5,
-    paddingHorizontal: 5
-  },
-  time: {
-    fontSize: 20
-  },
-
-  buttonsGroupWrapper: {
-    flex: 3,
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  button: {
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:50,
-    backgroundColor: 'rgba(170, 180, 182, 0.64)'
-  },
-  iconLocation: {
-    color: 'red'
+  rowTitle: {
+    fontSize: 18
   }
 });
 

@@ -10,7 +10,8 @@ module.exports = {
     DarkPrimaryText: '#032250',
     SecondText: '#727272',
     DividerColor: '#B6B6B6',
-    DimGray: '#aeacac'
+    DimGray: '#aeacac',
+    BackgroundListView: '#fafafa'
 
   }
 }
