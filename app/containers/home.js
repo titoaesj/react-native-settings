@@ -25,7 +25,7 @@ class Home extends Component {
         type: "LINK",
         callback: this.itemCallback.bind(this),
         options: {
-          leftIcon: "clock"
+          leftIcon: "access-time"
         }
       },
       {
@@ -34,8 +34,17 @@ class Home extends Component {
         callback: this.itemCallback.bind(this)
       },
       {
-        title: "Toggle",
-        type: "SWITCH",
+        title: "Switch",
+        type: "SWITCH"
+      },
+      {
+        title: "CheckBox",
+        type: "CHECKBOX",
+        callback: this.itemCallback.bind(this)
+      },
+      {
+        title: "RadioButton",
+        type: "RADIOBUTTON",
         callback: this.itemCallback.bind(this)
       }
     ];

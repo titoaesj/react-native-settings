@@ -61,8 +61,8 @@ class PointListItem extends Component {
           return (
               <Touchable onPress={this.props.data.callback}>
                 <View style={[styles.containerLINK, ...style]}>
-                  <Image style={styles.rowIcon} source={require('../../resources/img/ic_clock.png')} />
-                  {/*<Icon style={styles.rowIcon} name="timer" size={30} color={Color.color.SettingsIconColor} />*/}
+                  {/*<Image style={styles.rowIcon}  source={require('../../resources/img/ic_clock.png')} />*/}
+                  <Icon style={styles.rowIcon} name={this.props.data.options.leftIcon} size={35} color={Color.color.SettingsIconColor} />
                   <Text style={styles.rowWithIconTitle}>
                     {this.props.data.title}
                   </Text>
@@ -92,6 +92,40 @@ class PointListItem extends Component {
                   <View style={styles.col}>
                     <MKSwitch checked={true} style={styles.switch} />
                   </View>
+              </View>
+            </View>
+        );
+        break;
+
+        case 'CHECKBOX':
+        return (
+            <View style={[styles.containerSWITCH, ...style]}>
+              <Text style={styles.rowTitle}>
+                {this.props.data.title}
+              </Text>
+              <View style={styles.checkboxAlign}>
+                <View style={styles.col}>
+                  <MKCheckbox
+                    onCheckedChange={this.props.data.callback}
+                    checked={true} />
+                </View>
+              </View>
+            </View>
+        );
+        break;
+
+        case 'RADIOBUTTON':
+        return (
+            <View style={[styles.containerSWITCH, ...style]}>
+              <Text style={styles.rowTitle}>
+                {this.props.data.title}
+              </Text>
+              <View style={styles.checkboxAlign}>
+                <View style={styles.col}>
+                  <MKRadioButton
+                    checked={true}
+                    group={this.radioGroup} />
+                </View>
               </View>
             </View>
         );
@@ -156,7 +190,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   switchAlign: {
-    alignSelf: 'flex-end'
+    alignSelf: 'center'
+  },
+  checkboxAlign: {
+    alignSelf: 'center'
   }
 });
 
