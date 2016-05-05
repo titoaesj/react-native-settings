@@ -22,7 +22,7 @@ class Home extends Component {
     this.data = [
       {
         title: "Horário de trabalho",
-        type: "LINK",
+        type: "BUTTON",
         callback: this.itemCallback.bind(this),
         options: {
           leftIcon: "access-time"
@@ -30,7 +30,7 @@ class Home extends Component {
       },
       {
         title: "Notificação",
-        type: "LINK",
+        type: "BUTTON",
         callback: this.itemCallback.bind(this)
       },
       {
@@ -66,7 +66,7 @@ class Home extends Component {
   }
 
   itemCallback(){
-    console.log('callback do item');
+    console.log('home callback do item');
   }
 
   switchCallback(self) {
@@ -74,15 +74,15 @@ class Home extends Component {
   }
 
   sliderCallback(self) {
-    console.log('Currente value ', self);
+    console.log('home Currente value ', self);
   }
 
   checkBoxCallback(self) {
-    console.log('checkbox tur ', self);
+    console.log('home checkbox tur ', self);
   }
 
   radioCallback(self) {
-    console.log('radio tur ', self);
+    console.log('home radio tur ', self);
   }
 
 
