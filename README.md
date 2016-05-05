@@ -1,6 +1,13 @@
 # react-native-settings
 Componentes em React Native para criação de telas de configuração do Android
 
+> Components para tela de configuração do Android
+[Settings](https://www.google.com/design/spec/patterns/settings.html#settings-usage)
+
+| [![VideoBlocks](https://raw.githubusercontent.com/tjunior/react-native-settings/master/Screenshot_20160505-141239.png)](https://raw.githubusercontent.com/tjunior/react-native-settings/master/Screenshot_20160505-141239.png)   [![AudioBlocks](https://raw.githubusercontent.com/tjunior/react-native-settings/master/Screenshot_20160505-141300.png)](https://raw.githubusercontent.com/tjunior/react-native-settings/master/Screenshot_20160505-141300.png)
+
+
+
 
 ## The MIT License (MIT)
 Copyright (c) 2016 (Tito Albino Evangelista da Silva Junior, Felipe Mendes Braga)
