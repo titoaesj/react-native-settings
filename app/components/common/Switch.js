@@ -2,15 +2,21 @@ import React, {
   Component,
   StyleSheet,
   View,
-  Text
+  Text,
+  Switch as RNSwitch
 } from 'react-native';
 
-import {
-  MKSwitch
-} from 'react-native-material-kit';
-
-
 class Switch extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      turSwitch: this.props.checked
+    }
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -19,10 +25,15 @@ class Switch extends Component {
         </Text>
         <View style={styles.switch}>
             <View style={styles.col}>
-              <MKSwitch
-                checked={this.props.checked}
-                onCheckedChange={(e) => this.props.callback(e)}
-                style={styles.switch} />
+
+              <RNSwitch
+                onValueChange={(value) => {
+                  this.props.callback(value);
+                  this.setState({ turSwitch: value})}}
+                style={styles.switch}
+                value={this.state.turSwitch}
+                />
+
             </View>
         </View>
       </View>
