@@ -58,7 +58,8 @@ class SettingsListView  extends Component {
    */
   renderRow(data, idSec, idRow) {
     return (
-      <ListItem data={data} />
+      <ListItem
+        data={data} />
     );
   }
 
@@ -91,6 +92,7 @@ class SettingsListView  extends Component {
             dataSource={this.state.dataSource}
             renderRow={this.renderRow.bind(this)}
             style={styles.listView}
+            renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
           />
       );
   }
@@ -120,6 +122,10 @@ var styles = StyleSheet.create({
     },
     listView: {
       backgroundColor: Color.color.BackgroundListView
+    },
+    separator: {
+      height: 1,
+      backgroundColor: '#CCCCCC',
     }
 });
 

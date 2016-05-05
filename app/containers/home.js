@@ -35,17 +35,30 @@ class Home extends Component {
       },
       {
         title: "Switch",
-        type: "SWITCH"
+        type: "SWITCH",
+        callback: this.switchCallback.bind(this)
       },
       {
         title: "CheckBox",
         type: "CHECKBOX",
-        callback: this.itemCallback.bind(this)
+        callback: this.checkBoxCallback.bind(this)
       },
       {
         title: "RadioButton",
         type: "RADIOBUTTON",
-        callback: this.itemCallback.bind(this)
+        callback: this.radioCallback.bind(this)
+      },
+      {
+        title: "Volume do microfone",
+        type: "SLIDER",
+        callback: this.sliderCallback.bind(this),
+        options: {
+          leftIcon: "mic",
+          min: 0,
+          max: 100,
+          value: 50,
+
+        }
       }
     ];
 
@@ -54,6 +67,23 @@ class Home extends Component {
   itemCallback(){
     console.log('callback do item');
   }
+
+  switchCallback(self) {
+    console.log('switch tur ', self);
+  }
+
+  sliderCallback(self) {
+    console.log('Currente value ', self);
+  }
+
+  checkBoxCallback(self) {
+    console.log('checkbox tur ', self);
+  }
+
+  radioCallback(self) {
+    console.log('radio tur ', self);
+  }
+
 
   render() {
 

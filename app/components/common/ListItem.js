@@ -21,8 +21,31 @@ import {
   MKColor,
   getTheme,
   setTheme,
+  MKSlider
 } from 'react-native-material-kit';
 
+
+
+class ValueText extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      curValue: props.initial,
+    };
+  }
+
+  onChange(curValue) {
+    this.setState({curValue});
+  }
+
+  render() {
+    return (
+      <Text style={styles.legendLabel}>
+        {this.state.curValue} ({this.props.rangeText})
+      </Text>
+    );
+  }
+}
 
 /**
  * Componente chamado pelo PointList para renderizar cada ponto batido
@@ -90,7 +113,10 @@ class PointListItem extends Component {
               </Text>
               <View style={styles.switchAlign}>
                   <View style={styles.col}>
-                    <MKSwitch checked={true} style={styles.switch} />
+                    <MKSwitch
+                      checked={false}
+                      onCheckedChange={(e) => this.props.data.callback(e)}
+                      style={styles.switch} />
                   </View>
               </View>
             </View>
@@ -99,14 +125,14 @@ class PointListItem extends Component {
 
         case 'CHECKBOX':
         return (
-            <View style={[styles.containerSWITCH, ...style]}>
+            <View style={[styles.containerCHECKBOX, ...style]}>
               <Text style={styles.rowTitle}>
                 {this.props.data.title}
               </Text>
               <View style={styles.checkboxAlign}>
                 <View style={styles.col}>
                   <MKCheckbox
-                    onCheckedChange={this.props.data.callback}
+                    onCheckedChange={(e) => this.props.data.callback(e)}
                     checked={true} />
                 </View>
               </View>
@@ -116,15 +142,41 @@ class PointListItem extends Component {
 
         case 'RADIOBUTTON':
         return (
-            <View style={[styles.containerSWITCH, ...style]}>
+            <View style={[styles.containerRADIOBUTTON, ...style]}>
               <Text style={styles.rowTitle}>
                 {this.props.data.title}
               </Text>
               <View style={styles.checkboxAlign}>
                 <View style={styles.col}>
                   <MKRadioButton
-                    checked={true}
+                    checked={false}
+                    onCheckedChange={(e) => this.props.data.callback(e)}
                     group={this.radioGroup} />
+                </View>
+              </View>
+            </View>
+        );
+        break;
+
+        case 'SLIDER':
+        return (
+            <View style={[styles.containerSLIDER, ...style]}>
+              {/*<Image style={styles.rowIcon}  source={require('../../resources/img/ic_clock.png')} />*/}
+              <Icon style={styles.rowIcon} name={this.props.data.options.leftIcon} size={35} color={Color.color.SettingsIconColor} />
+              <View style={styles.bodySLIDER}>
+                <View style={styles.rowWithIconTitleSlider}>
+                  <Text style={styles.titleSliderText}>
+                    {this.props.data.title}
+                  </Text>
+                </View>
+                <View style={styles.col}>
+                  <MKSlider
+                    ref="slider"
+                    min={this.props.data.options.min}
+                    max={this.props.data.options.max}
+                    value={this.props.data.options.value}
+                    onChange={(e) => this.props.data.callback(e)}
+                    style={styles.slider} />
                 </View>
               </View>
             </View>
@@ -157,9 +209,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     height: 70,
-    padding: 16,
-    borderBottomWidth: 0.3,
-    borderBottomColor: 'gray'
+    padding: 16
   },
   containerSWITCH: {
     flex: 1,
@@ -170,9 +220,40 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     height: 70,
     paddingTop:5,
-    paddingBottom:5,
-    borderBottomWidth: 0.3,
-    borderBottomColor: 'gray'
+    paddingBottom:5
+  },
+  containerCHECKBOX: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 16,
+    paddingRight: 16,
+    height: 70,
+    paddingTop:5,
+    paddingBottom:5
+  },
+  containerRADIOBUTTON: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 16,
+    paddingRight: 16,
+    height: 70,
+    paddingTop:5,
+    paddingBottom:5
+  },
+  containerSLIDER: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingLeft: 16,
+    paddingRight: 16,
+    height: 70,
+    paddingTop:5,
+    paddingBottom:5
   },
   rowWithIconTitle: {
     fontSize: 18
@@ -194,6 +275,23 @@ const styles = StyleSheet.create({
   },
   checkboxAlign: {
     alignSelf: 'center'
+  },
+  slider: {
+    flex: 1
+  },
+  bodySLIDER: {
+    flex: 1,
+    marginLeft: 0,
+    paddingLeft: 0,
+    alignSelf: 'stretch',
+    paddingTop: 5
+
+  },
+  rowWithIconTitleSlider: {
+      paddingLeft: 15
+  },
+  titleSliderText: {
+      fontSize: 15
   }
 });
 
