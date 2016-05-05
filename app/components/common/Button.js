@@ -12,7 +12,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 class Button extends Component {
   render() {
       // Verifica se a row terar icon
-      if (this.props.options.leftIcon != null) {
+      if (this.props.options != null &&
+        this.props.options.leftIcon != null) {
         return (
             <Touchable onPress={this.props.callback}>
               <View style={styles.container}>
@@ -49,9 +50,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   title: 'Undefined Product',
-  options: {
-    leftIcon: "access-time"
-  },
   callback: () => console.log('click button')
 };
 
