@@ -36,6 +36,7 @@ class Home extends Component {
       {
         title: "Switch",
         type: "SWITCH",
+        checked: false,
         callback: this.switchCallback.bind(this)
       },
       {
@@ -69,7 +70,7 @@ class Home extends Component {
   }
 
   switchCallback(self) {
-    console.log('switch tur ', self);
+    console.log('home switch tur ', self);
   }
 
   sliderCallback(self) {

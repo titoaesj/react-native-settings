@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
 import Touchable from './Touchable';
 import Color from '../../resources/color';
+import Switch from './Switch';
 
 import {
   MKIconToggle,
@@ -107,19 +108,11 @@ class PointListItem extends Component {
 
         case 'SWITCH':
         return (
-            <View style={[styles.containerSWITCH, ...style]}>
-              <Text style={styles.rowTitle}>
-                {this.props.data.title}
-              </Text>
-              <View style={styles.switchAlign}>
-                  <View style={styles.col}>
-                    <MKSwitch
-                      checked={false}
-                      onCheckedChange={(e) => this.props.data.callback(e)}
-                      style={styles.switch} />
-                  </View>
-              </View>
-            </View>
+          <Switch
+            title={this.props.data.title}
+            checked={this.props.data.checked}
+            callback={this.props.data.callback}
+          />
         );
         break;
 
@@ -210,17 +203,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     height: 70,
     padding: 16
-  },
-  containerSWITCH: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingLeft: 16,
-    paddingRight: 16,
-    height: 70,
-    paddingTop:5,
-    paddingBottom:5
   },
   containerCHECKBOX: {
     flex: 1,
